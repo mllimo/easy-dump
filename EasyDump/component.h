@@ -5,7 +5,7 @@
 
 namespace easy {
 
-    class Dump;
+    class Actions;
 
     class Component {
     public:
@@ -14,10 +14,6 @@ namespace easy {
         Component(const Component&) = default;
 
         virtual ~Component();
-        virtual Dump& Process(Dump& dump);
-
-    protected:
-        std::ofstream& GetFile(Dump& dump);
-        std::vector<std::unique_ptr<Component>>& GetComponents(Dump& dump);
+        virtual void Process(Actions& actions);
     };
 }
