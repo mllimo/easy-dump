@@ -1,6 +1,8 @@
 #include "separator.h"
 #include "dump.h"
 
+#include <iostream>
+
 namespace easy {
     BegSeparator::BegSeparator(const std::string& separator) :
         separator_(separator),
@@ -10,7 +12,8 @@ namespace easy {
 
     void BegSeparator::Process(Actions& actions)
     {
-        actions.GetFile() << separator_;
+        if (activated_)
+            actions.GetFile() << separator_;
     }
 
     const std::string& BegSeparator::GetSeparator() const
@@ -28,25 +31,21 @@ namespace easy {
     {
     }
 
-    void EndSperator::Process(Actions& actions)
+    void EndSperator::SetUp(Actions& actions)
     {
-        int i;
-        for (i = 0; i < actions.GetComponents().size(); ++i) {
-            if (actions.GetComponents()[i].get() == this) {
+        int i = 0;
+        for (i = actions.GetComponents().size() - 1; i >= 0; --i) {
+            auto begin_ptr = dynamic_cast<BegSeparator*>(actions.GetComponents()[i].get());
+            if (begin_ptr != nullptr && begin_ptr->GetSeparator() == separator_) {
+                actions.GetComponents().erase(actions.GetComponents().begin() + i);
                 break;
             }
         }
+        actions.GetComponents().erase(actions.GetComponents().begin() + actions.GetComponents().size() - 1);
+    }
 
-        if (i == actions.GetComponents().size()) return;
-
-        for (i; i >= 0; --i) {
-            auto begin_cast = dynamic_cast<BegSeparator*>(actions.GetComponents()[i].get());
-            if (begin_cast != nullptr) {
-                if (begin_cast->GetSeparator() == separator_) {
-                    begin_cast->activated() = false;
-                }
-            }
-        }
-
+    void EndSperator::Process(Actions& actions)
+    {
+        std::cout << "nothing to do\n";
     }
 }

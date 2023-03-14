@@ -14,6 +14,8 @@ namespace easy {
         Component(const Component&) = default;
 
         virtual ~Component();
+        virtual void SetUp(Actions& actions);
         virtual void Process(Actions& actions);
+
     };
 }

@@ -71,6 +71,7 @@ namespace easy {
         {
             std::unique_ptr<T> component = std::make_unique<T>(element);
             components_.push_back(std::move(component));
+            components_.back()->SetUp(*this);
         }
 
     private:

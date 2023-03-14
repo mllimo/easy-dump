@@ -7,6 +7,10 @@ namespace easy {
 
     Component::~Component() {}
 
+    void Component::SetUp(Actions& actions)
+    {
+    }
+
     void Component::Process(Actions& dump)
     { 
         std::string err = "Component::";
