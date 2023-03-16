@@ -20,7 +20,7 @@ namespace easy {
                 actions.GetStream() << *it << (next_it == container_.cend() ? "" : ", ");
             }
             actions.GetStream() << ']';
-            actions.GetComponents().erase(actions.GetComponents().begin() + actions.GetComponents().size() - 1);
+            actions.GetComponents().pop_back();
         }
         
     private:

@@ -41,6 +41,6 @@ namespace easy {
                 break;
             }
         }
-        actions.GetComponents().erase(actions.GetComponents().begin() + actions.GetComponents().size() - 1);
+        actions.GetComponents().pop_back();
     }
 }
