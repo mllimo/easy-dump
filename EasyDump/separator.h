@@ -21,7 +21,6 @@ namespace easy {
     public:
         EndSperator(const std::string& separator);
         void SetUp(Actions& actions) override;
-        void Process(Actions& dump) override;
 
     private:
         std::string separator_;

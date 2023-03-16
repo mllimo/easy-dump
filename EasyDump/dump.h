@@ -1,9 +1,10 @@
 ﻿#pragma once
 
-#include <string>
+#include <iostream>
 #include <fstream>
-#include  <type_traits>
+#include <string>
 #include <vector>
+#include  <type_traits>
 
 #include "component.h"
 
@@ -29,6 +30,8 @@ namespace easy {
     class Dump {
     public:
         Dump(const std::string& path);
+        Dump(std::ostream& os = std::cout);
+
 
         friend class Actions;
 
@@ -40,6 +43,7 @@ namespace easy {
         }
 
     private:
+        std::ostream& stream_;
         std::ofstream file_;
     };
 
@@ -48,7 +52,7 @@ namespace easy {
         Actions(Dump& dump) : dump_(dump) {}
         Actions(Actions&&) = default;
 
-        std::ofstream& GetFile() { return dump_.file_; }
+        std::ostream& GetStream() { return dump_.stream_; }
         std::vector<std::unique_ptr<Component>>& GetComponents() { return components_; }
 
         template <typename T>
@@ -61,7 +65,7 @@ namespace easy {
         template <typename T>
         void OperatorLS(const T& element, std::false_type)
         {
-            dump_.file_ << element;
+            dump_.stream_ << element;
             for (auto& component : components_)
                 component->Process(*this);
         }
@@ -80,7 +84,3 @@ namespace easy {
     };
 
 }
-
-#if 0
-obj << easy::BegSeparator("|") << a << b << c;
-#endif

@@ -13,7 +13,7 @@ namespace easy {
     void BegSeparator::Process(Actions& actions)
     {
         if (activated_)
-            actions.GetFile() << separator_;
+            actions.GetStream() << separator_;
     }
 
     const std::string& BegSeparator::GetSeparator() const
@@ -42,10 +42,5 @@ namespace easy {
             }
         }
         actions.GetComponents().erase(actions.GetComponents().begin() + actions.GetComponents().size() - 1);
-    }
-
-    void EndSperator::Process(Actions& actions)
-    {
-        std::cout << "nothing to do\n";
     }
 }
