@@ -3,7 +3,7 @@
 #
 
 # Agregue un origen al ejecutable de este proyecto.
-add_executable (EasyDump "dump.cpp" "dump.h" "component.h" "component.cpp" "separator.h" "separator.cpp" "main.cpp" "list.h" )
+add_executable (EasyDump "dump.cpp" "dump.h" "component.h" "component.cpp" "separator.h" "separator.cpp" "main.cpp" "list.h"  "compare.h" "type_helper.h")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET EasyDump PROPERTY CXX_STANDARD 20)
