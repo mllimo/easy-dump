@@ -22,7 +22,7 @@ int main() {
     dump << easy::List(a) << "\n";
     dump << easy::List(b) << "\n";
     dump << easy::List(c) << "\n";
-    dump << easy::Compare(a, c) << "\n";
+    dump << easy::Compare(pepe, manolo) << "\n";
     std::cout << "El pepe\n";
 
 
