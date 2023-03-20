@@ -6,7 +6,7 @@
 #include <vector>
 #include  <type_traits>
 
-#include "component.h"
+#include <EasyDump/h/component.h>
 
 namespace easy {
 

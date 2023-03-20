@@ -1,8 +1,8 @@
 #pragma once
 
-#include "component.h"
-#include "type_helper.h"
-#include "list.h"
+#include <EasyDump/h/type_helper.h>
+#include <EasyDump/h/component.h>
+#include <EasyDump/h/list.h>
 
 #include <algorithm>
 
@@ -31,7 +31,6 @@ namespace easy {
                 << (result ? " == " : " != ")
                 << name_b_ << '(';
             Print(value_b_, actions.GetStream()) << ')';
-
 
             actions.GetComponents().pop_back();
         }

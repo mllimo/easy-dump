@@ -1,5 +1,5 @@
-#include "component.h"
-#include "dump.h"
+#include <EasyDump/h/component.h>
+#include <EasyDump/h/dump.h>
 
 #include <stdexcept>
 

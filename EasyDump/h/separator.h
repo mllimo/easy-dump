@@ -1,6 +1,6 @@
 #pragma once
 
-#include "component.h"
+#include <EasyDump/h/component.h>
 
 namespace easy {
     class BegSeparator : public Component {
@@ -10,11 +10,9 @@ namespace easy {
         void Process(Actions& dump) override;
         
         const std::string& GetSeparator() const;
-        bool& activated();
 
     private:
         std::string separator_;
-        bool activated_ = false;
     };
 
     class EndSperator : public Component {

@@ -1,7 +1,7 @@
-#include "dump.h"
-#include "separator.h"
-#include "list.h"
-#include "compare.h"
+#include <EasyDump/h/separator.h>
+#include <EasyDump/h/dump.h>
+#include <EasyDump/h/list.h>
+#include <EasyDump/h/compare.h>
 
 #include <set>
 #include <list>

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "component.h"
+#include <EasyDump/h/component.h>
 
 namespace easy {
     template <typename Container>

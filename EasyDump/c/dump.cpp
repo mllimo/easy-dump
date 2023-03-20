@@ -1,4 +1,4 @@
-﻿#include "dump.h"
+﻿#include <EasyDump/h/dump.h>
 
 namespace easy {
     Dump::Dump(std::ostream& os) :

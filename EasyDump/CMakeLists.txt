@@ -1,12 +1,23 @@
-﻿# CMakeList.txt: proyecto de CMake para EasyDump, incluya el origen y defina
-# la lógica específica del proyecto aquí.
-#
+﻿set(PUBLIC_HEADER
+	h/compare.h
+	h/component.h
+	h/dump.h
+	h/list.h
+	h/separator.h
+)
 
-# Agregue un origen al ejecutable de este proyecto.
-add_executable (EasyDump "dump.cpp" "dump.h" "component.h" "component.cpp" "separator.h" "separator.cpp" "main.cpp" "list.h"  "compare.h" "type_helper.h")
+set(EASY_DUMP_SOURCES
+	c/component.cpp
+	c/dump.cpp
+	c/separator.cpp
+)
 
-if (CMAKE_VERSION VERSION_GREATER 3.12)
-  set_property(TARGET EasyDump PROPERTY CXX_STANDARD 20)
+if(BUILD_SHARED_LIBS)
+	message("TODO")
 endif()
 
-# TODO: Agregue pruebas y destinos de instalación si es necesario.
+if(BUILD_STATIC_LIBS)
+	add_library(EasyDump STATIC ${PUBLIC_HEADERS} ${EASY_DUMP_SOURCES})
+endif()
+
+
