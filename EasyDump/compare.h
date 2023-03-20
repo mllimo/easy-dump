@@ -1,6 +1,9 @@
 #pragma once
 
 #include "component.h"
+#include "type_helper.h"
+
+#include <algorithm>
 
 namespace easy {
 
@@ -17,12 +20,29 @@ namespace easy {
         
         void SetUp(Actions& actions) override
         {
+            
+            bool result = Compare(value_a_, value_b_);
+
             actions.GetStream()
-                << name_a_ << '(' << value_a_ << ')'
-                << (value_a_ == value_b_ ? " == " : " != ")
-                << name_b_ << '(' << value_b_ << ')';
+                << name_a_
+                << (result ? " == " : " != ")
+                << name_b_;
 
             actions.GetComponents().pop_back();
+        }
+
+
+
+        template <typename Taa = Ta, typename Tbb = Tb, std::enable_if_t< !IsContainer<Taa>::value, bool> = false>
+        bool Compare(const Taa& a, const Tbb& b)
+        {
+            return a == b;
+        }
+
+        template <typename Taa = Ta, typename Tbb = Tb, std::enable_if_t< IsContainer<Taa>::value, bool> = true>
+        bool Compare(const Taa& a, const Tbb& b)
+        {
+            return std::equal(a.begin(), a.end(), b.begin(), b.end());
         }
 
     private:
