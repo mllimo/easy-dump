@@ -15,7 +15,7 @@ Simple library to easy dump information to a console, file or ostream.
 dump << easy::BegSeparator(",") << "key1" << "key2" << "key3" << "key4" << "key5" << "key6" << easy::EndSperator(",");
 
 // better than
-stream << "key1" << ' ' <<"key2" << ' ' << "key3" << ' ' << "key4" << ' ' << "key5" << ' ' << "key6";
+stream << "key1" << ',' <<"key2" << ',' << "key3" << ',' << "key4" << ',' << "key5" << ',' << "key6" << ',';
 ```
 * List: It will print containers that use iterators.
 ```cpp

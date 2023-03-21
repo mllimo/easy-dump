@@ -16,6 +16,5 @@ namespace easy {
         virtual ~Component();
         virtual void SetUp(Actions& actions);
         virtual void Process(Actions& actions);
-
     };
 }
